@@ -1,0 +1,344 @@
+/* ============================================================
+   Blood Donation Management System — style.css
+   Design tokens: warm ivory paper, true blood-crimson primary,
+   deep teal "recovery" accent, Fraunces display / Inter body.
+   Signature element: the droplet gauge (.drop-gauge).
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --paper: #FBF6F2;
+    --paper-raised: #FFFFFF;
+    --ink: #241C1C;
+    --ink-soft: #6B5C58;
+    --crimson: #C81E3A;
+    --crimson-deep: #8F1029;
+    --crimson-wash: #FDEBEE;
+    --teal: #0F6E66;
+    --teal-wash: #E4F3F1;
+    --amber: #B8790A;
+    --amber-wash: #FFF3DD;
+    --line: #E9DED9;
+    --line-soft: #F1E7E2;
+    --radius: 12px;
+    --shadow: 0 1px 2px rgba(36,28,28,0.04), 0 8px 24px -12px rgba(36,28,28,0.12);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { font-family: "Fraunces", Georgia, serif; color: var(--ink); letter-spacing: -0.01em; }
+h1 { font-size: 30px; font-weight: 600; margin-bottom: 8px; }
+h2 { font-size: 21px; font-weight: 600; margin-bottom: 12px; }
+h3 { font-size: 17px; font-weight: 600; margin-bottom: 6px; }
+p.subtitle { color: var(--ink-soft); margin-bottom: 20px; font-size: 15px; }
+
+a { color: var(--crimson); }
+
+/* ---- Header / Nav ---- */
+.site-header {
+    background: linear-gradient(135deg, var(--crimson) 0%, var(--crimson-deep) 100%);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 32px;
+    flex-wrap: wrap;
+    gap: 10px;
+    box-shadow: 0 2px 12px rgba(143,16,41,0.25);
+}
+.site-header .logo {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.site-header nav { display: flex; align-items: center; flex-wrap: wrap; gap: 4px; }
+.site-header nav a {
+    color: rgba(255,255,255,0.92);
+    text-decoration: none;
+    margin-left: 6px;
+    padding: 7px 12px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.15s ease;
+}
+.site-header nav a:hover { background: rgba(255,255,255,0.16); text-decoration: none; }
+.site-header nav .nav-user {
+    color: #ffe0e0;
+    margin-left: 10px;
+    font-size: 12.5px;
+    font-style: italic;
+    white-space: nowrap;
+}
+
+/* ---- Login boxes ---- */
+.login-box { max-width: 400px; margin: 48px auto; }
+.hint { font-size: 12.5px; color: var(--ink-soft); margin-top: 8px; }
+
+/* ---- Print ---- */
+@media print {
+    .site-header, .site-footer, form, .btn, nav { display: none !important; }
+    body { background: #fff; }
+}
+
+/* ---- Layout ---- */
+.container {
+    max-width: 1040px;
+    margin: 36px auto;
+    padding: 0 20px;
+    min-height: 60vh;
+}
+
+.site-footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    background: var(--paper-raised);
+    border-top: 1px solid var(--line);
+    margin-top: 48px;
+}
+
+/* ---- Cards / Sections ---- */
+.card {
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 26px 28px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow);
+}
+
+/* ---- Forms ---- */
+form label {
+    display: block;
+    margin-top: 14px;
+    font-weight: 600;
+    font-size: 13.5px;
+    color: var(--ink);
+}
+form input, form select, form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 5px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-size: 14.5px;
+    font-family: inherit;
+    background: var(--paper);
+    color: var(--ink);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+form input:focus, form select:focus, form textarea:focus {
+    outline: none;
+    border-color: var(--crimson);
+    box-shadow: 0 0 0 3px var(--crimson-wash);
+    background: var(--paper-raised);
+}
+form button, .btn {
+    display: inline-block;
+    margin-top: 20px;
+    background: var(--crimson);
+    color: #fff;
+    border: none;
+    padding: 11px 22px;
+    border-radius: 8px;
+    font-size: 14.5px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.15s ease, transform 0.1s ease;
+}
+form button:hover, .btn:hover { background: var(--crimson-deep); text-decoration: none; }
+form button:active, .btn:active { transform: translateY(1px); }
+.btn + .btn { margin-left: 10px; }
+.btn-secondary { background: var(--teal); }
+.btn-secondary:hover { background: #0a4f49; }
+.btn-fb { background: #1877F2; }
+.btn-fb:hover { background: #145dbf; }
+.btn-outline { background: transparent; color: var(--crimson); border: 1.5px solid var(--crimson); }
+.btn-outline:hover { background: var(--crimson-wash); }
+
+/* ---- Tables ---- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+    background: var(--paper-raised);
+    font-size: 14px;
+}
+table th, table td {
+    border-bottom: 1px solid var(--line-soft);
+    padding: 10px 12px;
+    text-align: left;
+    vertical-align: middle;
+}
+table th {
+    background: var(--line-soft);
+    font-weight: 600;
+    font-size: 12.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--ink-soft);
+}
+table tr:last-child td { border-bottom: none; }
+table tr:hover td { background: #fdfaf8; }
+
+/* ---- Alerts ---- */
+.alert { padding: 13px 16px; border-radius: 8px; margin-bottom: 18px; font-size: 14px; border: 1px solid transparent; }
+.alert-success { background: var(--teal-wash); color: #0a4f49; border-color: #bfe3de; }
+.alert-error { background: var(--crimson-wash); color: var(--crimson-deep); border-color: #f3c1ca; }
+.alert-warning { background: var(--amber-wash); color: #8a5e05; border-color: #f0dba4; }
+
+/* ---- Home hero ---- */
+.hero { text-align: center; padding: 56px 20px 20px; }
+.hero .eyebrow {
+    display: inline-block;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--crimson);
+    background: var(--crimson-wash);
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 18px;
+}
+.hero h1 { font-size: 44px; max-width: 720px; margin: 0 auto 14px; }
+.hero p { color: var(--ink-soft); margin: 14px auto 30px; max-width: 560px; font-size: 16px; }
+.hero-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 30px;
+}
+.hero-grid a {
+    display: block;
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 26px 16px;
+    text-decoration: none;
+    color: var(--ink);
+    font-weight: 600;
+    box-shadow: var(--shadow);
+    transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.hero-grid a:hover { border-color: var(--crimson); transform: translateY(-2px); text-decoration: none; }
+
+/* ---- Badges ---- */
+.badge {
+    display: inline-block;
+    padding: 3px 11px;
+    border-radius: 999px;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+.badge-ok { background: var(--teal-wash); color: #0a4f49; }
+.badge-low { background: var(--crimson-wash); color: var(--crimson-deep); }
+.badge-excess { background: var(--amber-wash); color: #8a5e05; }
+
+/* ============================================================
+   Signature element — the droplet gauge.
+   A blood-drop-shaped vessel that fills to show stock level.
+   ============================================================ */
+.drop-gauge-row { display: flex; align-items: center; gap: 8px; }
+.drop-gauge {
+    position: relative;
+    width: 30px;
+    height: 38px;
+    flex-shrink: 0;
+    background: var(--line-soft);
+    clip-path: path('M15 2C15 2 3 19 3 26.5C3 33.4 8.6 38.5 15 38.5C21.4 38.5 27 33.4 27 26.5C27 19 15 2 15 2Z');
+}
+.drop-gauge-fill {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: var(--pct, 0%);
+    background: linear-gradient(180deg, #E23150 0%, var(--crimson-deep) 100%);
+    transition: height 0.5s ease;
+}
+.drop-gauge-fill.excess { background: linear-gradient(180deg, #16A085 0%, var(--teal) 100%); }
+.drop-gauge-label {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--ink);
+    text-shadow: 0 1px 1px rgba(255,255,255,0.6);
+}
+.drop-gauge-units { font-size: 13px; font-weight: 600; color: var(--ink); min-width: 70px; }
+
+/* ---- Campaign cards ---- */
+.campaign-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+}
+.campaign-card { border-top: 4px solid var(--crimson); }
+.campaign-card .urge-text { color: var(--crimson-deep); font-weight: 600; margin: 10px 0; font-size: 14px; }
+
+/* ---- Stat tiles (reports) ---- */
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
+    margin-top: 6px;
+}
+.stat-tile {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 16px 18px;
+}
+.stat-tile .stat-value { font-family: "Fraunces", Georgia, serif; font-size: 28px; font-weight: 600; color: var(--crimson); }
+.stat-tile .stat-label { font-size: 12.5px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.04em; margin-top: 2px; }
+
+/* ---- Match suggestion cards (auto rebalance) ---- */
+.match-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+.match-flow { display: flex; align-items: center; gap: 10px; font-size: 14.5px; }
+.match-flow .agency-name { font-weight: 700; }
+.match-flow .arrow { color: var(--crimson); font-size: 18px; }
+
+/* ---- Section divider for grouped forms (agency management) ---- */
+.divider { border: none; border-top: 1px dashed var(--line); margin: 22px 0; }
+.tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    background: var(--line-soft);
+    color: var(--ink-soft);
+    padding: 2px 9px;
+    border-radius: 999px;
+    margin-left: 8px;
+}
